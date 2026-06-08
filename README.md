@@ -117,6 +117,8 @@ The exploratory data analysis was conducted to understand market patterns, prope
 
 This analysis explores the distribution of properties listed for sale and rent across different regions.
 
+![Sale vs Rent Analysis](images/EDA_PenjualanVSPenyewaan.png)
+
 Visualizations:
 
 - Overall distribution of Sale vs Rent listings.
@@ -135,6 +137,8 @@ Key Findings:
 
 This analysis examines the distribution of different property categories across regions.
 
+![Property Type Analysis](images/EDA_Kategori_Properti_Per_Kota_Dan_Per_Provinsi.png)
+
 Visualizations:
 
 - Property type distribution by province.
@@ -150,6 +154,8 @@ Key Findings:
 ### 3. Price Analysis
 
 This analysis investigates price variations across locations and listing purposes.
+
+![Price Analysis](images/EDA_Perbandingan_Harga_Rata_Rata.png)
 
 Visualizations:
 
@@ -169,6 +175,10 @@ Key Findings:
 ### 4. Correlation and Relationship Analysis
 
 This analysis evaluates the relationships between property features and price.
+
+![Price Analysis Outlier VS No Outlier](images/EDA_Matriks_Korelasi_Outlier_VS_Tanpa_Outlier.png)
+
+![Scatter plot analysis between price](images/EDA_ScatterPlot_Price_pada_beberapa_Variabel.png)
 
 Activities:
 
