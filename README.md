@@ -206,66 +206,143 @@ Among the numerical variables, property area showed the strongest relationship w
 
 # Data Preprocessing
 
-The preprocessing pipeline includes:
+The dataset was prepared for machine learning by performing several preprocessing steps to ensure data quality and compatibility with the Linear Regression algorithm.
 
-## Missing Value Handling
-- Numerical features → median imputation
-- Categorical features → mode imputation
+## Data Preparation
+- Reintroduced categorical variables (purpose, city, and property_type) into the dataset after outlier removal to preserve important location and property characteristics.
+- Verified that no missing values remained in the final modeling dataset.
+- Ensured all features were ready for feature engineering and model training.
 
-## Outlier Treatment
-- IQR-based detection
-- Log transformation on skewed variables
+## Feature Engineering
+Several transformations were applied to convert the data into a machine-learning-ready format:
 
-## Feature Encoding
-Applied One Hot Encoding for:
+Applied One-Hot Encoding to categorical variables:
+- purpose
 - city
 - property_type
-- purpose
+  
+Defined:
+- Target variable (y): price
+- Feature variables (X): property characteristics and encoded categorical features.
 
-## Feature Scaling
-Standardization applied before Gradient Descent optimization.
+Implemented a custom Standard Scaler from scratch to standardize feature values before Gradient Descent optimization.
 
----
-
-# Feature Engineering
-
-Additional features created:
-- Total rooms
-- Price per area
-- Location-based aggregations
+## Train-Test Split
+The dataset was divided into:
+- 80% Training Data
+- 20% Testing Data
+This split allows the model to learn from historical data while being evaluated on unseen observations.
 
 ---
 
 # Linear Regression From Scratch
+A Linear Regression model was implemented manually using NumPy without relying on machine learning libraries for the training process.
 
-The model was implemented manually using:
-- NumPy
-- Gradient Descent Optimization
-- Mean Squared Error Loss
-
-Implemented components:
+## Model Components
 - Weight initialization
-- Cost function
+- Bias initialization
+- Mean Squared Error (MSE) loss function
 - Gradient computation
-- Parameter updates
-- Training loop
-  
+- Gradient Descent optimization
+- Iterative parameter updates
 
-# Model Evaluation
+## Training Configuration
+- Optimization Algorithm: Gradient Descent
+- Number of Epochs: 1,000
+- Loss Function: Mean Squared Error (MSE)
 
-Evaluation metrics:
-- MAE (Mean Absolute Error)
-- RMSE (Root Mean Squared Error)
+## Training Result
+The training process showed a consistent reduction in loss:
+
+| Epoch | MSE Loss | 
+|----------|-----------|
+| 1 | 277.26 Trillion |
+| 100 | 31.29 Trillion | 
+| 500 | 30.70 Trillion | 
+| 1000 | 30.66 Trillion | 
+
+Final model parameters:
+
+- Bias (Intercept): 17,588,084.74
+- Number of learned coefficients: 14
+
+The decreasing loss demonstrates that the Gradient Descent implementation successfully converged during training.
 
 ---
 
-# Results & Interpretation
+# Model Evaluation
+The model was evaluated using the testing dataset with three common regression metrics.
+
+Evaluation metrics:
+| Metric | Result | 
+|----------|-----------|
+| MAE | PKR 5,459,268.83 |
+| RMSE | PKR 7,860,393.14 | 
+| R2 Score | 0.7450 |
+
+## Interpretation
+- The model explains approximately 74.5% of the variance in property prices.
+- On average, predictions differ from actual prices by approximately PKR 5.46 million.
+- The results indicate that the model captures the main factors influencing property prices while maintaining reasonable prediction accuracy.
+
+---
+
+# Residual Anlysis
+Residual analysis was conducted to evaluate prediction errors and verify the assumptions of Linear Regression.
+
+## Visualizations
+- Residual vs Predicted Plot
+- Residual Distribution Histogram
 
 ## Key Findings
+- Residuals are generally centered around zero, indicating that the model does not exhibit strong systematic bias.
+- The residual distribution shows that most prediction errors are concentrated near zero.
+- Some large residual values remain, suggesting that a small number of properties are still difficult to predict accurately.
 
+Overall, the residual analysis indicates that the model performs reasonably well and does not suffer from major prediction bias.
 
-## Model Behavior
+---
 
+# Feature Importance
+Feature importance was interpreted using the learned regression coefficients.
+
+## Top Influential Features
+| Feature | Coefficient | 
+|----------|-----------|
+| area_sqft | 12.46M |
+| purpose_For Sale | 10.65M | 
+| city_Karachi | 2.15M |
+
+Key Findings
+- Property area is the strongest predictor of house prices.
+- Properties listed for sale tend to have significantly higher values than rental properties.
+- Location has a substantial impact on property prices, particularly properties located in Karachi and Islamabad.
+- Houses generally command higher prices compared to other property types.
+- Bedrooms contribute positively to property value.
+
+These findings align with the insights obtained during the exploratory data analysis.
+
+---
+# Comparison With Scikit-Learn
+To validate the correctness of the custom implementation, the model was compared with Scikit-Learn's Linear Regression.
+
+## Performance Comparison
+| Feature | Scratch | Scikit-Learn | 
+|----------|-----------|-----------|
+| R2 Score | 74.50% | 74.54% |
+| MAE | PKR 5,459,268.83 | PKR 5,455,669.13 | 
+| Bias | 17,588,084.74 | 17,587,660.11 |
+
+---
+
+# Conclusion
+
+The custom implementation achieved nearly identical performance to Scikit-Learn's implementation.
+
+This demonstrates that:
+- The Gradient Descent algorithm was implemented correctly.
+- The coefficient estimates closely match those produced by a production-grade machine learning library.
+- The Linear Regression model successfully learned the underlying relationships within the dataset.
 
 ---
 
@@ -283,33 +360,7 @@ Evaluation metrics:
 ---
 
 # Project Structure
-
-
-# Visualizations
-
----
-
-# Future Improvements
-
-
----
-
-# Dashboard Features
-
-
----
-
-# Conclusion
-
-This project demonstrates the implementation of Linear Regression from scratch for real-world house price prediction problems.
-
-The project highlights:
-- machine learning fundamentals
-- optimization techniques
-- data preprocessing
-- exploratory data analysis
-- model interpretation
-- business-oriented insights
+house-price-prediction-pakistan/ │ ├── README.md │ ├── notebooks/ │ └── house_price_prediction.ipynb │ └── images/
 
 ---
 
