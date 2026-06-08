@@ -283,6 +283,8 @@ The decreasing loss demonstrates that the Gradient Descent implementation succes
 # Model Evaluation
 The model was evaluated using the testing dataset with three common regression metrics.
 
+![PrediksiAktualVSPredict](images/Prediksi_Aktual_VS_Predict.png)
+
 Evaluation metrics:
 | Metric | Result | 
 |----------|-----------|
@@ -315,6 +317,8 @@ Overall, the residual analysis indicates that the model performs reasonably well
 
 # Feature Importance
 Feature importance was interpreted using the learned regression coefficients.
+
+![Feature Importance](images/Feature_Importance.png)
 
 ## Top Influential Features
 | Feature | Coefficient | 
